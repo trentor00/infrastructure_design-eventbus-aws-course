@@ -13,8 +13,7 @@
         <module>src/contexts/shop</module>
         <module>src/contexts/seller_backoffice</module>
         <module>src/contexts/retention</module>
-        <module>src/app/api/api_shop</module>
-        <module>src/app/api/api_seller_backoffice</module>
+        <module>src/app/api</module>
     </modules>
 
 </project>
