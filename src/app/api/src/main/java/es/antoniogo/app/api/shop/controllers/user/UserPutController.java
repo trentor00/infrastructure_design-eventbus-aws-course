@@ -18,7 +18,7 @@ public final class UserPutController {
     }
 
 
-    @PutMapping(value = "/api/shop/user/{id}")
+    @PutMapping(value = "/api/shop/users/{id}")
     public ResponseEntity<String> index(@PathVariable String id, @RequestBody Request request) {
         userRegistrar.registrar(id, request.name(), request.email(), request.profilePicture());
         return new ResponseEntity<>(HttpStatus.CREATED);
