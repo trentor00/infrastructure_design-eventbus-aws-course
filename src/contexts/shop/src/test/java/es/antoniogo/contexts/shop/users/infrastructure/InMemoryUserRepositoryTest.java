@@ -1,6 +1,6 @@
 package es.antoniogo.contexts.shop.users.infrastructure;
 
-import es.antoniogo.contexts.shop.users.domain.User;
+import es.antoniogo.contexts.shop.users.domain.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
@@ -13,14 +13,16 @@ class InMemoryUserRepositoryTest {
     void save_a_valid_user() {
         InMemoryUserRepository inMemoryUserRepository = new InMemoryUserRepository();
 
-        inMemoryUserRepository.save(new User("some-id", "some-name", "some-email", "some-profilePicture"));
+        User user = UserMother.random();
+
+        inMemoryUserRepository.save(user);
     }
 
     @Test
     void search_an_existing_user() {
         InMemoryUserRepository inMemoryUserRepository = new InMemoryUserRepository();
 
-        User user = new User("some-id", "some-name", "some-email", "some-profilePicture");
+        User user = UserMother.random();
 
         inMemoryUserRepository.save(user);
 
@@ -31,6 +33,6 @@ class InMemoryUserRepositoryTest {
     void not_return_a_non_existing_user() {
         InMemoryUserRepository inMemoryUserRepository = new InMemoryUserRepository();
 
-        assertFalse(inMemoryUserRepository.search("non-existing-id").isPresent());
+        assertFalse(inMemoryUserRepository.search(UserIdMother.random()).isPresent());
     }
 }

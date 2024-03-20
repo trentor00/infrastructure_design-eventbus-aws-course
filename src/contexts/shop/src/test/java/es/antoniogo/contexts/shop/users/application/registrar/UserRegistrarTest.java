@@ -1,7 +1,6 @@
 package es.antoniogo.contexts.shop.users.application.registrar;
 
-import es.antoniogo.contexts.shop.users.domain.User;
-import es.antoniogo.contexts.shop.users.domain.UserRepository;
+import es.antoniogo.contexts.shop.users.domain.*;
 import org.junit.jupiter.api.Test;
 
 import static org.mockito.Mockito.*;
@@ -13,9 +12,14 @@ public final class UserRegistrarTest {
         UserRepository userRepository = mock(UserRepository.class);
         UserRegistrar userRegistrar = new UserRegistrar(userRepository);
 
-        User user = new User("some-id", "some-name", "some-email", "some-profilePicture");
+        User user = UserMother.random();
 
-        userRegistrar.registrar(user.id(), user.name(), user.email(), user.profilePicture());
+        userRegistrar.registrar(
+                user.id().value(),
+                user.name().value(),
+                user.email().value(),
+                user.profilePicture().value()
+        );
 
         verify(userRepository, atLeastOnce()).save(user);
     }

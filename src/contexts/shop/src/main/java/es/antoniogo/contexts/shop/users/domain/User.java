@@ -3,31 +3,33 @@ package es.antoniogo.contexts.shop.users.domain;
 import java.util.Objects;
 
 public final class User {
-    private String id;
-    private String name;
-    private String email;
-    private String profilePicture;
 
-    public User(String id, String name, String email, String profilePicture) {
+    private final UserId id;
+    private final UserName name;
+    private final UserEmail email;
+    private final UserProfilePicture profilePicture;
+
+    public User(UserId id, UserName name, UserEmail email, UserProfilePicture profilePicture) {
+
         this.id = id;
         this.name = name;
         this.email = email;
         this.profilePicture = profilePicture;
     }
 
-    public String id() {
+    public UserId id() {
         return id;
     }
 
-    public String name() {
+    public UserName name() {
         return name;
     }
 
-    public String email() {
+    public UserEmail email() {
         return email;
     }
 
-    public String profilePicture() {
+    public UserProfilePicture profilePicture() {
         return profilePicture;
     }
 
